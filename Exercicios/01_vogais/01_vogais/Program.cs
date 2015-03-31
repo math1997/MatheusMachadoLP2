@@ -10,7 +10,7 @@ namespace _01_vogais
     {
         static void Main(string[] args)
         {
-            string vogais = "áéíóúaeiouAEIOUÁÉÍÓÚàÀ";
+            string vogais = "AEIOUÁÉÍÓÚàÀáéíóúaeiou";
             int quantidade = -1;
             string frase;
             Console.WriteLine("Digite a frase: ");
