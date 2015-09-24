@@ -44,6 +44,8 @@
     <Compile Include="classgerente.cs" />
     <Compile Include="Classterceirizados.cs" />
     <Compile Include="Classtrabalhador.cs" />
+    <Compile Include="funcionarioClass1.cs" />
+    <Compile Include="funcionariosdaempresaClass1.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

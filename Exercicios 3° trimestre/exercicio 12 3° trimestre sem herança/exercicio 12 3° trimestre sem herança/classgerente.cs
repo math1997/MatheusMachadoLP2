@@ -6,25 +6,46 @@ using System.Threading.Tasks;
 
 namespace exercicio_12_3__trimestre_sem_herança
 {
-    class classgerente
+    class classgerente : funcionariosdaempresaClass1
     {
-        public double Salario { get; set; }
+        funcionariosdaempresaClass1 f = new funcionariosdaempresaClass1();
+        private string Data_nascimento;
 
-        public string Nome { get; set; }
+       
 
-        public DateTime DataNascimento { get; set; }
+        private string Matricula;
 
-        public string Matricula { get; set; }
+       
 
-        public string CPF { get; set; }
+        private string Nome;
 
-        public string áreaGenciada { get; set; }
+        
 
-        public double Adicional { get; set; }
+        private string cpf;
 
-        public double SalarioTotal()
+        
+        private string _area_atuacao;
+
+        public string AreaAtuacao { get; set; }
+
+        public override double Salario()
         {
-            return Salario + Adicional;
+            double sal = f.Salario() + 4000;
+            return sal;
+        }
+
+        public override double valor_vale_alimentacao()
+        {
+            double valeAlimentacao = Salario() * 0.08;
+            
+            if (valeAlimentacao > 750)
+            {
+                valeAlimentacao = 750;
+            }
+
+            return valeAlimentacao;
         }
     }
 }
+
+        
