@@ -1,0 +1,72 @@
+namespace Ex 13
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            
+         
+
+            
+            MySqlCommand command = new MySqlCommand();
+            command.Connection = conn;
+            MySqlConnection conn = new MySqlConnection("Server=localhost;Database=test;Uid=root;Pwd= ");
+            conn.Open();
+
+            bool abrir = true;
+            while (abrir)
+            {
+                Console.WriteLine("Digite seu login: ");
+                string login = Console.ReadLine();
+                Console.WriteLine("Digite sua senha: ");
+                string senha = Console.ReadLine();
+
+                string str = String.Format("SELECT * FROM Usuario WHERE Login = '{0}' AND Senha = '{1}', login,senha);
+                command.CommandText = str;
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                var u = new Usuario();
+                
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        u.Id = reader.GetInt32(0);
+                        u.Nome = reader.GetString(1);
+                        u.Email = reader.GetString(2);
+                        u.Login = reader.GetString(3);
+                        u.Senha = reader.GetString(4);
+                        u.Data = reader.GetString(5);                        
+                         Console.WriteLine("Última data de Acesso: {0}", u.Data);                        
+                          AtualizarAcesso(u.Id);
+                         Console.WriteLine("Data atualizada.");
+                        
+                        
+                    }
+                    reader.Close();
+                    conn.Close();
+                }
+                 	else
+                		{
+                   
+                    		Console.WriteLine("O usuário está incorreto");
+                    
+                		}
+                
+                Console.WriteLine("Digite 1 para sair");
+                int sair = int.Parse(Console.ReadLine());
+                
+
+                if (sair == "1")
+                {
+                    Console.WriteLine("Fim do programa");
+                      abrir = false;
+                }
+                else
+                {
+                    abrir = true;
+                }
+            }
+        }
+    }
